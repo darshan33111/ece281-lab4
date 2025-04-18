@@ -93,6 +93,13 @@ begin
         end if;
     end process;
  
+    tdm_clk_div: clock_divider
+        generic map (k_DIV => 100000)
+        port map (
+            i_clk => clk,
+            i_reset => btnL,
+            o_clk => w_slow_clk
+        );
     -- FSM clock divider (for elevator movement)
     clk_div: clock_divider
         generic map (k_DIV => k_CLK_DIV)
